@@ -1,0 +1,13 @@
+/projects/UserServerTFM/src/gen/java/io/swagger/api/NotFoundException.java
+/projects/UserServerTFM/src/gen/java/io/swagger/api/JacksonJsonProvider.java
+/projects/UserServerTFM/src/gen/java/io/swagger/api/ApiException.java
+/projects/UserServerTFM/src/gen/java/io/swagger/api/RFC3339DateFormat.java
+/projects/UserServerTFM/src/gen/java/io/swagger/api/UserApiService.java
+/projects/UserServerTFM/src/gen/java/io/swagger/api/UserApi.java
+/projects/UserServerTFM/src/main/java/io/swagger/api/factories/UserApiServiceFactory.java
+/projects/UserServerTFM/src/main/java/io/swagger/api/Bootstrap.java
+/projects/UserServerTFM/src/gen/java/io/swagger/api/ApiOriginFilter.java
+/projects/UserServerTFM/src/gen/java/io/swagger/model/Usuario.java
+/projects/UserServerTFM/src/main/java/io/swagger/api/impl/UserApiServiceImpl.java
+/projects/UserServerTFM/src/gen/java/io/swagger/api/ApiResponseMessage.java
+/projects/UserServerTFM/src/gen/java/io/swagger/api/StringUtil.java

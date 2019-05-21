@@ -15,8 +15,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 import io.swagger.model.Usuario;
 
-import java.util.Map;
-import java.util.List;
+import java.util.*;
 import io.swagger.api.NotFoundException;
 
 import java.io.InputStream;
@@ -30,7 +29,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.*;
 import javax.validation.constraints.*;
-
 
 @Path("/user")
 
@@ -108,7 +106,7 @@ import javax.validation.constraints.*;
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
 
-        return delegate.inicioSesionUsuarios(username,usaurios,securityContext);
+        return delegate.inicioSesionUsuarios(username,password,securityContext);
     }
     @GET
     @Path("/logout")
@@ -140,7 +138,8 @@ import javax.validation.constraints.*;
 
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
-        usuarios.add(Usuario);
+        //
+        users.add(body);
         return delegate.registroUsuarios(body,securityContext);
     }
     @PUT

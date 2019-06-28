@@ -1,0 +1,2123 @@
+openapi: 3.0.1
+info:
+  title: Proyectos de Investigacion
+  description: >-
+    Esta API provee los servicios necesarios para gestionar proyectos de
+    investigacion.
+  version: '1.0'
+  termsOfService: 'http://spilab.es/'
+  contact:
+    name: Proyectos de Investigacion
+    url: 'http://spilab.es/'
+    email: dgarciajyz@alumnos.unex.es
+paths:
+  /user:
+    post:
+      tags:
+        - Usuario
+      summary: Registra un nuevo usuario
+      description: Creacion de nuevos usuarios.
+      operationId: registroUsuarios
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Usuario'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+  /user/login:
+    get:
+      tags:
+        - Usuario
+      summary: Devuelve
+      description: Creacion de nuevos usuarios.
+      operationId: inicioSesionUsuarios
+      parameters:
+        - name: username
+          in: query
+          description: Nomber de usuario
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: Password del usuario
+          required: true
+          schema:
+            type: string
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+  /user/logout:
+    get:
+      tags:
+        - Usuario
+      summary: Cierre de sesion
+      description: Cierra la sesion abierta por el usuario actual
+      operationId: logoutUsuario
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+  /administration:
+    get:
+      tags:
+        - Administracion
+      summary: Devuelve todo lo relacionado con un usuario de administracion
+      description: Devuelve todo lo relacionado con un usuario de administracion
+      operationId: usuarioAdministracion
+      parameters:
+        - name: idAdministration
+          in: query
+          description: Id del personal de administracion
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Administracion
+      summary: Registra un nuevo usuario de administracion
+      description: Creacion de nuevos usuarios de administracion.
+      operationId: registroAdministracion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Administration'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - Administracion
+      summary: Modifica un usuario de administracion
+      description: Modificacion de usuarios de administracion.
+      operationId: editarAdministracion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Administration'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Administracion
+      summary: Elimina un usuario de administracion
+      description: Elimina usuarios de administracion.
+      operationId: eliminarAdministracion
+      parameters:
+        - name: idAdministration
+          in: query
+          description: Id del personal de administracion
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'          
+  /costs:
+    get:
+      tags:
+        - Costes
+      summary: Devuelve los costes de un investigador concreto
+      description: Devuelve los costes de un investigador concreto
+      operationId: costesInvestigador
+      parameters:
+        - name: idResearcher
+          in: query
+          description: Id del investigador
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Costes
+      summary: Registra un nuevo coste asociado a un investigador
+      description: Creacion de nuevos coste asociado a un investigador
+      operationId: registroCostesInvestigador
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cost'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - Costes
+      summary: Modifica un coste asociado a un investigador
+      description: Modifica un coste asociado a un investigador
+      operationId: editarCoste
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cost'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Costes
+      summary: Eliminado de costes asociados a un investigador
+      description: Eliminado de costes asociados a un investigador
+      operationId: eliminarCoste
+      parameters:
+        - name: idCoste
+          in: query
+          description: Id del coste
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'          
+  /projects:
+    get:
+      tags:
+        - Project
+      summary: Devuelve los datos de un proyecto concreto
+      description: Devuelve los datos de un proyecto concreto
+      operationId: getProyecto
+      parameters:
+        - name: idProject
+          in: query
+          description: Id del proyecto
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Project
+      summary: Registra un nuevo proyecto
+      description: Creacion de nuevos proyectos
+      operationId: registroProyecto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - Project
+      summary: Modifica un proyecto
+      description: Modifica un proyecto
+      operationId: editarProyecto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Project
+      summary: Eliminado un proyecto
+      description: Borrado de proyectos
+      operationId: eliminarProyecto
+      parameters:
+        - name: idProject
+          in: query
+          description: Id del proyecto
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'  
+  /researcher/:
+    get:
+      tags:
+        - Investigacion
+      summary: Devuelve todo lo relacionado con un investigador
+      description: Devuelve todo lo relacionado con un investigador
+      operationId: usuarioInvestigador
+      parameters:
+        - name: idInvestigador
+          in: path
+          description: Id del personal de investigacion
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Investigacion
+      summary: Registra un nuevo investigador
+      description: Creacion de nuevos investigadores
+      operationId: registroInvestigador
+      parameters:
+        - name: idInvestigador
+          in: path
+          description: Id del personal de investigacion
+          required: true
+          schema:
+            type: integer
+            format: int64      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Researcher'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - Investigacion
+      summary: Modifica un investigador
+      description: Modificacion de investigadores
+      operationId: editarInvestigador
+      parameters:
+        - name: idInvestigador
+          in: path
+          description: Id del personal de investigacion
+          required: true
+          schema:
+            type: integer
+            format: int64      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Researcher'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Investigacion
+      summary: Elimina un investigador
+      description: Elimina investigadores
+      operationId: eliminarInvestigador
+      parameters:
+        - name: idInvestigador
+          in: path
+          description: Id del investigador
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'          
+  /researcher/teachingslot:
+    get:
+      tags:
+        - Docencia
+      summary: Devuelve todo lo relacionado los dias de clases de un investigador
+      description: Devuelve todo lo relacionado los dias de clases de un investigador
+      operationId: docenciaInvestigador
+      parameters:
+        - name: idInvestigador
+          in: query
+          description: Id del personal de investigacion
+          required: true
+          schema:
+            type: integer
+        - name: year
+          in: query
+          description: Año de consulta
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Docencia
+      summary: Registra un nuevo dia de docencia
+      description: Registra un nuevo dia de docencia
+      operationId: registroDocencia
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeachingSlot'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - Docencia
+      summary: Modifica un el dia de docencia del investigador
+      description: Modifica un el dia de docencia del investigador
+      operationId: editarDocencia
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeachingSlot'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Docencia
+      summary: Elimina un dia de docencia de un investigador
+      description: Elimina docencia
+      operationId: eliminarDocencia
+      parameters:
+        - name: idDocencia
+          in: query
+          description: Id del dia de docencia
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+  /researcher/researchslot:
+    get:
+      tags:
+        - Investigacion
+      summary: Devuelve todo lo relacionado la investigacion de un PDI
+      description: Devuelve todo lo relacionado con la investigacion de un PDI
+      operationId: investigacionResearcher
+      parameters:
+        - name: idInvestigador
+          in: query
+          description: Id del personal de investigacion
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Investigacion
+      summary: Registra un nuevo slot de investigacion
+      description: Registra un nuevo slot de investigacion
+      operationId: registroInvestigacion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResearchSlot'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - Investigacion
+      summary: Modifica un slot de investigacion
+      description: Modifica un slot de investigacion
+      operationId: editarSlotInvestigacion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResearchSlot'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Investigacion
+      summary: Elimina un slot de investigacion
+      description: Elimina un slot de investigacion
+      operationId: eliminarSlotInvestigacion
+      parameters:
+        - name: idInvestigacion
+          in: query
+          description: Id del slot de investigacion
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+  /researcher/project:
+    get:
+      tags:
+        - Proyectos Investigacion
+      summary: Devuelve los proyectos en los que participa un investigador
+      description: Devuelve todo lo relacionado con los proyectos en los que participa un investigador
+      operationId: proyectosInvestigador
+      parameters:
+        - name: idInvestigador
+          in: query
+          description: Id del personal de investigacion
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Proyectos Investigacion
+      summary: Registra un nuevo investigador en un proyecto
+      description: Añade un investigador a un proyecto
+      operationId: registroInvestigadorProyecto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Project_Researcher'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Proyectos Investigacion
+      summary: Elimina un investigador de un proyecto
+      description: Elimina investigador de un proyecto
+      operationId: eliminarInvestigadorProyecto
+      parameters:
+        - name: idInvestigador
+          in: query
+          description: Id del investigador
+          required: true
+          schema:
+            type: integer
+        - name: idProyecto
+          in: query
+          description: Id del proyecto
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'          
+  /researcher/project/reports:
+    get:
+      tags:
+        - Reportes
+      summary: Devuelve los reportes de un proyecto concreto
+      description: Devuelve todo lo relacionado con los reportes de un proyecto
+      operationId: reportesProyecto
+      parameters:
+        - name: idProyecto
+          in: query
+          description: Id del personal de investigacion
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Reportes
+      summary: Registra un nuevo reporte en un proyecto
+      description: Añade un reporte a un proyecto
+      operationId: registroReporteProyecto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Report'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - Reportes
+      summary: Modifica un Reporte
+      description: Modificacion de Reportes
+      operationId: editarReporte
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Report'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Reportes
+      summary: Elimina un Reporte de un proyecto
+      description: Elimina Reporte de un proyecto
+      operationId: eliminarReporteProyecto
+      parameters:
+        - name: idReporte
+          in: query
+          description: Id del reporte
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'          
+  /researcher/project/reports/workpackage:
+    get:
+      tags:
+        - Work Package
+      summary: Devuelve los paquetes de trabajo de un reporte de un proyecto
+      description: Devuelve todo lo relacionado con los reportes de un proyecto
+      operationId: paquetesReportes
+      parameters:
+        - name: idWorkpack
+          in: query
+          description: Id del Work Package
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Work Package
+      summary: Registra un parquete de trabajo en un proyecto
+      description: Añade un reporte a un proyecto
+      operationId: registroWorkpackProyecto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkPackage'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - Work Package
+      summary: Modifica un Work Package
+      description: Modificacion de Work Package
+      operationId: editarWorkpack
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkPackage'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Work Package
+      summary: Elimina un Work Package de un Reporte
+      description: Elimina Reporte de un Reporte
+      operationId: eliminarWorkpack
+      parameters:
+        - name: idReporte
+          in: query
+          description: Id del reporte
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'          
+  /researcher/project/reports/workpackage/assignation:
+    get:
+      tags:
+        - Asignaciones
+      summary: Devuelve las asignaciones de horas y tareas de un investigador
+      description: Devuelve todo lo relacionado con las asignaciones de horas y tareas de un investigador
+      operationId: asignaciones
+      parameters:
+        - name: idResearcher
+          in: query
+          description: Id del investigador
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Asignaciones
+      summary: Asignacion de horas a un investigador dentro de un proyecto
+      description: Asignacion de horas a un investigador dentro de un proyecto
+      operationId: asignacionHorasInvestigacion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Assignation'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - Asignaciones
+      summary: Modifica horas de un investigador dentro de un proyecto
+      description: Modificacion de horas da un investigador dentro de un proyecto
+      operationId: editarAsignacion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Assignation'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Asignaciones
+      summary: Elimina asignacion
+      description: Elimina asignaciones
+      operationId: eliminarAsignacion
+      parameters:
+        - name: idReporte
+          in: query
+          description: Id de la asignacion
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'  
+  /country:
+    get:
+      tags:
+        - Pais
+      summary: Devuelve paises almacenados en la base de datos
+      description: Devuelve paises almacenados en la base de datos
+      operationId: getCountry
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Pais
+      summary: Registra un nuevo pais
+      description: Creacion de nuevos paises
+      operationId: postCountry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Country'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - Pais
+      summary: Modifica un Campus
+      description: Modificacion de Campus
+      operationId: editarCountry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Country'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Pais
+      summary: Elimina un Pais
+      description: Elimina Pais
+      operationId: eliminarCountry
+      parameters:
+        - name: idCountry
+          in: query
+          description: Id del Country
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'          
+  /autonomy:
+    get:
+      tags:
+        - Comunidad Autonoma
+      summary: Devuelve Comunidad Autonoma almacenadas en la base de datos
+      description: Devuelve Comunidad Autonoma almacenadas en la base de datos
+      operationId: getAutonomy
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Comunidad Autonoma
+      summary: Registra una nueva Comunidad Autonoma
+      description: Creacion de nuevas Comunidades Autonomas
+      operationId: postAutonomy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Autonomy'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - Comunidad Autonoma
+      summary: Modifica una Comunidad Autonoma
+      description: Modificacion de Comunidad Autonoma
+      operationId: editarAutonomy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Autonomy'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Comunidad Autonoma
+      summary: Elimina una Comunidad Autonoma
+      description: Elimina Comunidad Autonoma
+      operationId: eliminarAutonomy
+      parameters:
+        - name: idAutonomy
+          in: query
+          description: Id del autonomy
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'  
+  /province:
+    get:
+      tags:
+        - Provincia
+      summary: Devuelve Provincias almacenadas en la base de datos
+      description: Devuelve Provincias almacenadas en la base de datos
+      operationId: getProvince
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Provincia
+      summary: Registra una nueva Provincia
+      description: Creacion de nuevas Provincias
+      operationId: postProvince
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Province'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - Provincia
+      summary: Modifica una Provincia
+      description: Modificacion de Provincia
+      operationId: editarProvince
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Province'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Provincia
+      summary: Elimina una Provincia
+      description: Elimina Provincia
+      operationId: eliminarProvince
+      parameters:
+        - name: idProvince
+          in: query
+          description: Id de la Provincia
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'  
+  /city:
+    get:
+      tags:
+        - Ciudad
+      summary: Devuelve Ciudades almacenadas en la base de datos
+      description: Devuelve Ciudades almacenadas en la base de datos
+      operationId: getCity
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Ciudad
+      summary: Registra una nueva Ciudad
+      description: Creacion de nuevas Ciudades
+      operationId: postCity
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/City'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - Ciudad
+      summary: Modifica una Ciudad
+      description: Modificacion de Ciudad
+      operationId: editarCity
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/City'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Ciudad
+      summary: Elimina una Ciudad
+      description: Elimina Ciudad
+      operationId: eliminarCity
+      parameters:
+        - name: idCity
+          in: query
+          description: Id de la Ciudad
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'  
+  /workplace:
+    get:
+      tags:
+        - Espacio de Trabajo
+      summary: Devuelve los Espacios de Trabajo
+      description: Devuelve todo lo relacionado con los Espacios de Trabajo
+      operationId: getWorkplace
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Espacio de Trabajo
+      summary: Registra un nuevo Espacio de Trabajo
+      description: Creacion de nuevos Espacios de Trabajo
+      operationId: postWorkplace
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Workplace'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - Espacio de Trabajo
+      summary: Modifica un Espacio de Trabajo
+      description: Modificacion de Espacios de Trabajo
+      operationId: editarWorkplace
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Workplace'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Espacio de Trabajo
+      summary: Elimina un Espacio de Trabajo
+      description: Elimina un Espacio de Trabajo
+      operationId: eliminarWorkplace
+      parameters:
+        - name: idWorkplace
+          in: query
+          description: Id del Espacio de Trabajo
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'          
+  /researcher/calendar:
+    get:
+      tags:
+        - Calendar
+      summary: Devuelve el calendario del investigador
+      description: Devuelve el calendario del investigador
+      operationId: getCalendar
+      parameters:
+        - name: idResearcher
+          in: query
+          description: Id del investigador
+          required: true
+          schema:
+            type: integer      
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Calendar
+      summary: Registra un nuevo evento en el calendario
+      description: Creacion de nuevos centros educativos
+      operationId: postCalendar
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Calendar'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - School
+      summary: Modifica un calendario
+      description: Modificacion calendarios
+      operationId: editarCalendario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Calendar'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Calendar
+      summary: Elimina un calenario
+      description: Elimina un calendario
+      operationId: eliminarCalendar
+      parameters:
+        - name: idCalendar
+          in: query
+          description: Id del calendario
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'          
+  /researcher/calendar/year:
+    get:
+      tags:
+        - Calendar - Year
+      summary: Devuelve el año asociado al calendario del investigador
+      description: Devuelve el año asociado al calendario del investigador
+      operationId: getCalendarYear
+      parameters:
+        - name: idYear
+          in: query
+          description: Id del calendario
+          required: true
+          schema:
+            type: integer      
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Calendar - Year
+      summary: Registra un nuevo año en el calendario
+      description: Creacion de nuevos año en el calendario
+      operationId: postCalendarYear
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Year'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - Calendar - Year
+      summary: Modifica un año en el calendario
+      description: Modificacion años calendarios
+      operationId: editarCalendarioYear
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Year'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Calendar - Year
+      summary: Elimina un año en el calenario
+      description: Elimina un año en el calendario
+      operationId: eliminarCalendarYear
+      parameters:
+        - name: idYear
+          in: query
+          description: Id del año
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'          
+  /researcher/calendar/year/month:
+    get:
+      tags:
+        - Calendar - Year - Month
+      summary: Devuelve el mes asociado al calendario del investigador
+      description: Devuelve el mes asociado al calendario del investigador
+      operationId: getCalendarYearMonth
+      parameters:
+        - name: idMonth
+          in: query
+          description: Id del mes
+          required: true
+          schema:
+            type: integer      
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Calendar - Year - Month
+      summary: Registra un nuevo mes en el calendario
+      description: Creacion de nuevos meses en el calendario
+      operationId: postCalendarYearMonth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Month'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - Calendar - Year - Month
+      summary: Modifica un mes en el calendario
+      description: Modificacion mes calendarios
+      operationId: editarCalendarioYearMonth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Month'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Calendar - Year - Month
+      summary: Elimina un mes en el calenario
+      description: Elimina un mes en el calendario
+      operationId: eliminarCalendarYearMonth
+      parameters:
+        - name: idMonth
+          in: query
+          description: Id del mes
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'   
+  /researcher/calendar/year/month/day:
+    get:
+      tags:
+        - Calendar - Year - Month - Day
+      summary: Devuelve el dia asociado al calendario del investigador
+      description: Devuelve el dia asociado al calendario del investigador
+      operationId: getCalendarYearMonthDay
+      parameters:
+        - name: idDay
+          in: query
+          description: Id del dia
+          required: true
+          schema:
+            type: integer      
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Calendar - Year - Month - Day
+      summary: Registra un nuevo dia en el calendario
+      description: Creacion de nuevos dias en el calendario
+      operationId: postCalendarYearMonthDay
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Day'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - Calendar - Year - Month - Day
+      summary: Modifica un dia en el calendario
+      description: Modificacion de dias en el calendario
+      operationId: editarCalendarioYearMonthDay
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Day'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Calendar - Year - Month - Day
+      summary: Elimina un dia en el calenario
+      description: Elimina un dia en el calendario
+      operationId: eliminarCalendarYearMonthDay
+      parameters:
+        - name: idDia
+          in: query
+          description: Id del dia
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+  /festive:
+    get:
+      tags:
+        - Festivos
+      summary: Devuelve los festivos
+      description: Devuelve todo lo relacionado con los festivos
+      operationId: getFestive
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Festivos
+      summary: Registra un nuevo festivo
+      description: Creacion de nuevos festivos
+      operationId: postFestivo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Festive'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - Festivos
+      summary: Modifica un festivo
+      description: Modificacion de festivo
+      operationId: editarFestivo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Festive'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Festivos
+      summary: Elimina un festivo
+      description: Elimina festivo
+      operationId: eliminarFestivo
+      parameters:
+        - name: idFestivo
+          in: query
+          description: Id del festivo
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'          
+  /festive/days:
+    get:
+      tags:
+        - DiasFestivos
+      summary: Devuelve los festivos
+      description: Devuelve todo lo relacionado con los dias festivos de un investigador
+      operationId: getFestiveDay
+      parameters:
+        - name: idResearcher
+          in: query
+          description: Id del investigador
+          required: true
+          schema:
+            type: integer    
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - DiasFestivos
+      summary: Registra un nuevo festivo
+      description: Creacion de nuevos festivos
+      operationId: postDiaFestivo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FestiveDay'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - DiasFestivos
+      summary: Modifica un Dia festivo
+      description: Modificacion de Dia festivo
+      operationId: editarDiaFestivo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FestiveDay'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - DiasFestivos
+      summary: Elimina un festivo
+      description: Elimina festivo
+      operationId: eliminarDiaFestivo
+      parameters:
+        - name: idFestivo
+          in: query
+          description: Id del festivo
+          required: true
+          schema:
+            type: integer
+        - name: idDiaFestivo
+          in: query
+          description: Id del dia festivo
+          required: true
+          schema:
+            type: integer
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'          
+
+components:
+  schemas:
+    Usuario:
+      type: object
+      properties:
+        idUsuario:
+          type: integer
+          format: int64
+          example: 1
+        username:
+          type: string
+          example: Administrador
+        password:
+          type: string
+          example: Administrador
+    Project:
+      type: object
+      properties:
+        idProject:
+          type: integer
+          format: int64
+          example: 1
+        acronym:
+          type: string
+          example: RoQME
+        projectName:
+          type: string
+          example: RoQME
+        fundings:
+          type: integer
+          format: int64
+          example: 25000
+        startDate:
+          type: string
+          format: date
+          example: "2018/01/01"
+        endDate:
+          type: string
+          format: date
+          example: "2018/12/31"
+        idCoordinator:
+          type: integer
+          format: int64
+          example: 1
+        idPartner:
+          type: integer
+          format: int64
+          example: 1          
+    Cost:
+      type: object
+      properties:
+        idCoste:
+          type: integer
+          format: int64
+          example: 1
+        idInvestigador:
+          type: integer
+          format: int64
+          example: 1
+        anio:
+          type: integer
+          format: int64
+          example: 2017          
+        coste:
+          type: integer
+          format: int64
+          example: 0            
+    Administration:
+      type: object
+      properties:
+        idAdministration:
+          type: integer
+          format: int64
+          example: 1
+        email:
+          type: string
+          example: ""
+        last_first_name:
+          type: string
+          example: Esther 
+        complete_name:
+          type: string
+          example: Esther 
+        category:
+          type: string
+          example: OTRI 
+    Researcher:
+      type: object
+      properties:
+        idResearcher:
+          type: integer
+          format: int64
+          example: 1
+        email:
+          type: string
+          example: ""
+        last_first_name:
+          type: string
+          example: Garcia-Ojeda 
+        complete_name:
+          type: string
+          example: Pablo 
+        knolewge_area:
+          type: string
+          example: Lenguajes 
+        idSchool:
+          type: integer
+          example:  1
+        idCampus:
+          type: integer
+          example:  1
+        category:
+          type: string
+          example:  Doctor
+        hoursYear:
+          type: integer
+          example:  1720          
+        hired:
+          type: boolean
+          example:  true  
+        idPartner:
+          type: integer
+          example:  1
+    Country:
+      type: object
+      properties:
+        idCountry:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          example: España
+    Autonomy:
+      type: object
+      properties:
+        idAutonomy:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          example: Extremadura
+        idCountry:
+          type: integer
+          format: int64
+          example: 1 
+    Province:
+      type: object
+      properties:
+        idProvince:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          example: Badajoz
+        idAutonomy:
+          type: integer
+          format: int64
+          example: 1               
+    City:
+      type: object
+      properties:
+        idCity:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          example: Don Benito
+        idProvince:
+          type: integer
+          format: int64
+          example: 1    
+    Workplace:
+      type: object
+      properties:
+        idWorkplace:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          example: EPCC
+        idCity:
+          type: integer
+          example: 1
+    Project_Researcher:
+      type: object
+      properties:
+        idProject:
+          type: integer
+          format: int64
+          example: 1
+        idResearcher:
+          type: integer
+          example: 1
+    Report:
+      type: object
+      properties:
+        idReport:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          example: Administrador
+        start_date:
+          type: string
+          example: 2018/01/01          
+        end_date:
+          type: string
+          example: 2018/12/31       
+        deadline:
+          type: string
+          example: 2018/10/01       
+        idProject:
+          type: integer
+          example: 1
+    WorkPackage:
+      type: object
+      properties:
+        idWorkpack:
+          type: integer
+          format: int64
+          example: 1
+        package_code:
+          type: string
+          example: C001
+        activity_name:
+          type: string
+          example: Fase C001
+        hours:
+          type: integer
+          format: int64
+          example: 25
+        idResearcherResponsible:
+          type: integer
+          example: 1
+        idReport:
+          type: integer
+          example: 1
+    Assignation:
+      type: object
+      properties:
+        idAssignation:
+          type: integer
+          format: int64
+          example: 1
+        hours:
+          type: integer
+          format: int64
+          example: 25
+        hours_left:
+          type: integer
+          format: int64
+          example: 25
+        idWorkpack:
+          type: integer
+          example: 1
+        idResearcherIp:
+          type: integer
+          example: 1
+        idResearcherReporter:
+          type: integer
+          example: 1
+    TeachingSlot:
+      type: object
+      properties:
+        idSlot:
+          type: integer
+          format: int64
+          example: 1
+        hours:
+          type: integer
+          format: int64
+          example: 25
+        idDay:
+          type: integer
+          example: 1
+    ResearchSlot:
+      type: object
+      properties:
+        idSlot:
+          type: integer
+          format: int64
+          example: 1
+        hours:
+          type: integer
+          format: int64
+          example: 25
+        idDay:
+          type: integer
+          example: 1
+        idAssignation:
+          type: integer
+          example: 1
+    Calendar:
+      type: object
+      properties:
+        idCalendar:
+          type: integer
+          format: int64
+          example: 1
+        idResearcher:
+          type: integer
+          example: 1
+    Year:
+      type: object
+      properties:
+        idYear:
+          type: integer
+          format: int64
+          example: 1
+        idCalendar:
+          type: integer
+          example: 1          
+        year:
+          type: integer
+          example: 2018
+    Month:
+      type: object
+      properties:
+        idMonth:
+          type: integer
+          format: int64
+          example: 1
+        idYear:
+          type: integer
+          example: 1
+        month:
+          type: integer
+          example: 12
+    Day:
+      type: object
+      properties:
+        idDay:
+          type: integer
+          format: int64
+          example: 1
+        idYear:
+          type: integer
+          example: 1
+        day:
+          type: integer
+          example: 31
+    Festive:
+      type: object
+      properties:
+        idFestive:
+          type: integer
+          format: int64
+          example: 1
+        name:
+          type: string
+          example: Dia del centro de la EPCC
+        idDay:
+          type: integer
+          example: 31
+    FestiveDay:
+      type: object
+      properties:
+        idFestive:
+          type: integer
+          format: int64
+          example: 1
+        idDResearcher:
+          type: integer
+          example: 31 
+        idDay:
+          type: integer
+          example: 31          
+        day:
+          type: integer
+          example: 1 
+        month:
+          type: integer
+          example: 12  
+        year:
+          type: integer
+          example: 2013          
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Usuario'
+    '201':
+      description: Created
+      content:
+        text/plain:
+          schema:
+            title: Created
+            type: string
+            example: Created
+    '404':
+      description: Not found response
+      content:
+        text/plain:
+          schema:
+            title: Endpoint not found
+            type: string
+            example: Not found
+    '405':
+      description: Invalid input
+      content:
+        text/plain:
+          schema:
+            title: Invalid input
+            type: string
+            example: The format is not valid

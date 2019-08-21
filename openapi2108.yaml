@@ -230,6 +230,97 @@ paths:
           $ref: '#/components/responses/404'
         '405':
           $ref: '#/components/responses/405'          
+  /academic_course:
+    get:
+      tags:
+        - Curso Académico
+      summary: Devuelve el curso acádemico para un periodo concreto
+      description: Devuelve el curso acádemico para un periodo concreto
+      operationId: getAcademicCourse
+      parameters:
+        - name: start
+          in: query
+          description: año comienzo
+          required: true
+          schema:
+            type: integer
+        - name: end
+          in: query
+          description: año fin
+          required: true
+          schema:
+            type: integer            
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    post:
+      tags:
+        - Curso Académico
+      summary: Registra un nuevo curso académico
+      description: Creacion de nuevos cursos académicos
+      operationId: postAcademicCourse
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Academic_Course'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    put:
+      tags:
+        - Curso Académico
+      summary: Modifica un curso académico
+      description: Modifica un curso académico
+      operationId: putAcademicCourse
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Academic_Course'
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+    delete:
+      tags:
+        - Curso Académico
+      summary: Eliminado un Curso Académico
+      description: Borrado de Cursos Académicos
+      operationId: deleteAcademicCourse
+      parameters:
+        - name: start
+          in: query
+          description: año comienzo
+          required: true
+          schema:
+            type: integer
+        - name: end
+          in: query
+          description: año fin
+          required: true
+          schema:
+            type: integer  
+      responses:
+        '201':
+          $ref: '#/components/responses/201'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'    
   /projects:
     get:
       tags:
@@ -308,98 +399,8 @@ paths:
         '404':
           $ref: '#/components/responses/404'
         '405':
-          $ref: '#/components/responses/405'  
-/academic_course:
-  get:
-    tags:
-      - Curso Académico
-    summary: Devuelve el curso acádemico para un periodo concreto
-    description: Devuelve el curso acádemico para un periodo concreto
-    operationId: getAcademicCourse
-    parameters:
-      - name: start
-        in: query
-        description: año comienzo
-        required: true
-        schema:
-          type: integer
-      - name: end
-        in: query
-        description: año fin
-        required: true
-        schema:
-          type: integer            
-    responses:
-      '201':
-        $ref: '#/components/responses/201'
-      '404':
-        $ref: '#/components/responses/404'
-      '405':
-        $ref: '#/components/responses/405'
-  post:
-    tags:
-      - Curso Académico
-    summary: Registra un nuevo curso académico
-    description: Creacion de nuevos cursos académicos
-    operationId: postAcademicCourse
-    requestBody:
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Academic_Course'
-    responses:
-      '201':
-        $ref: '#/components/responses/201'
-      '404':
-        $ref: '#/components/responses/404'
-      '405':
-        $ref: '#/components/responses/405'
-  put:
-    tags:
-      - Curso Académico
-    summary: Modifica un curso académico
-    description: Modifica un curso académico
-    operationId: putAcademicCourse
-    requestBody:
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Academic_Course'
-    responses:
-      '201':
-        $ref: '#/components/responses/201'
-      '404':
-        $ref: '#/components/responses/404'
-      '405':
-        $ref: '#/components/responses/405'
-  delete:
-    tags:
-      - Curso Académico
-    summary: Eliminado un Curso Académico
-    description: Borrado de Cursos Académicos
-    operationId: deleteAcademicCourse
-    parameters:
-      - name: start
-        in: query
-        description: año comienzo
-        required: true
-        schema:
-          type: integer
-      - name: end
-        in: query
-        description: año fin
-        required: true
-        schema:
-          type: integer  
-    responses:
-      '201':
-        $ref: '#/components/responses/201'
-      '404':
-        $ref: '#/components/responses/404'
-      '405':
-        $ref: '#/components/responses/405'            
+          $ref: '#/components/responses/405'
+          
   /researcher/:
     get:
       tags:
